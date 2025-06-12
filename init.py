@@ -11,13 +11,20 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(app.instance_p
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-# cors = CORS(app, resources={
-#     r"/api/*": {
-#         "origins": ["http://localhost:3000"],
-#         "methods": ["GET", "POST", "OPTIONS"],
-#         "allow_headers": ["Authorization", "Content-Type"]
-#     }
-# })
+DOMAIN = os.environ.get("DOMAIN")
+
+CORS(app, resources={
+    r"/api/*": {
+        "origins": DOMAIN,
+        "methods": ["POST"],
+        "allow_headers": ["Authorization", "Content-Type"]
+    },
+    r"/api/*":{
+        "origins":"*",
+        "methods":["GET"],
+
+    }
+})
 
 
 # Inicializar extensiones
