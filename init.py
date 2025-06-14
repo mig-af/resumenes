@@ -14,14 +14,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 DOMAIN = os.environ.get("DOMAIN")
 
 CORS(app, resources={
-    r"/api/*": {
-        "origins": DOMAIN,
-        "methods": ["POST"],
-        "allow_headers": ["Authorization", "Content-Type"]
-    },
+    # r"/api/*": {
+    #     "origins": DOMAIN,
+    #     "methods": ["POST"],
+    #     "allow_headers": ["Authorization", "Content-Type"]
+    # },
     r"/api/*":{
         "origins":"*",
-        "methods":["GET"],
+        "methods":["GET", "POST"],
 
     }
 })
